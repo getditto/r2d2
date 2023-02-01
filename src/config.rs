@@ -211,9 +211,11 @@ where
         self
     }
 
-    // used by tests
+    /// Sets the rate that idle and stale connections are pruned.
+    ///
+    /// Defaults to 30.
     #[allow(dead_code)]
-    pub(crate) fn reaper_rate(mut self, reaper_rate: Duration) -> Builder<M> {
+    pub fn reaper_rate(mut self, reaper_rate: Duration) -> Builder<M> {
         self.reaper_rate = reaper_rate;
         self
     }

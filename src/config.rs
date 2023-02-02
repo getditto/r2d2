@@ -40,6 +40,7 @@ where
             .field("max_lifetime", &self.max_lifetime)
             .field("idle_timeout", &self.idle_timeout)
             .field("connection_timeout", &self.connection_timeout)
+            .field("reaper_rate", &self.reaper_rate)
             .field("error_handler", &self.error_handler)
             .field("event_handler", &self.event_handler)
             .field("connection_customizer", &self.connection_customizer)
@@ -267,6 +268,7 @@ where
             max_lifetime: self.max_lifetime,
             idle_timeout: self.idle_timeout,
             connection_timeout: self.connection_timeout,
+            reaper_rate: self.reaper_rate,
             error_handler: self.error_handler,
             event_handler: self.event_handler,
             connection_customizer: self.connection_customizer,
@@ -284,6 +286,7 @@ pub struct Config<C, E> {
     pub max_lifetime: Option<Duration>,
     pub idle_timeout: Option<Duration>,
     pub connection_timeout: Duration,
+    pub reaper_rate: Duration,
     pub error_handler: Box<dyn HandleError<E>>,
     pub event_handler: Box<dyn HandleEvent>,
     pub connection_customizer: Box<dyn CustomizeConnection<C, E>>,
@@ -300,6 +303,7 @@ impl<C, E> fmt::Debug for Config<C, E> {
             .field("max_lifetime", &self.max_lifetime)
             .field("idle_timeout", &self.idle_timeout)
             .field("connection_timeout", &self.connection_timeout)
+            .field("reaper_rate", &self.reaper_rate)
             .field("error_handler", &self.error_handler)
             .field("event_handler", &self.event_handler)
             .field("connection_customizer", &self.connection_customizer)
